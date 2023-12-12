@@ -11,6 +11,7 @@ class Square:
 
     Methods:
         __init__(self, size=0): Constructor to initialize the square with an optional size.
+        area(self): Calculate and return the area of the square.
     """
 
     def __init__(self, size=0):
@@ -30,3 +31,12 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
+
+    def area(self):
+        """
+        Calculate and return the area of the square.
+
+        Returns:
+            int: The area of the square.
+        """
+        return self.__size ** 2
