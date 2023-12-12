@@ -1,3 +1,7 @@
+"""
+This module defines a simple Square class.
+"""
+
 class Square:
     """
     This is a simple Square class.
@@ -17,3 +21,4 @@ class Square:
             size (int): The size of the square.
         """
         self.__size = size
+        
