@@ -1,15 +1,19 @@
-Square = __import__('0-square').Square
+class Square:
+    """
+    This is a simple Square class.
 
-my_square = Square(3)
-print(type(my_square))
-print(my_square.__dict__)
+    Attributes:
+        __size (int): The size of the square.
 
-try:
-    print(my_square.size)
-except Exception as e:
-    print(e)
+    Methods:
+        __init__(self, size): Constructor to initialize the square with a given size.
+    """
 
-try:
-    print(my_square.__size)
-except Exception as e:
-    print(e)
+    def __init__(self, size):
+        """
+        Constructor for the Square class.
+
+        Args:
+            size (int): The size of the square.
+        """
+        self.__size = size
