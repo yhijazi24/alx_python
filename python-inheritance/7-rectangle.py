@@ -1,4 +1,5 @@
 """ this is a definition """
+
 class Rectangle(BaseGeometry):
     """
     A class representing a rectangle, inheriting from BaseGeometry.
