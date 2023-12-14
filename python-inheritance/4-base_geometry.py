@@ -10,15 +10,3 @@ class BaseGeometry:
         """
         raise Exception("area() is not implemented")
 
-
-# Example usage:
-bg = BaseGeometry()
-
-try:
-    bg.area()  # Attempting to call the area method
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-# Verify the presence of the area method in the class
-print(dir(BaseGeometry))
-
