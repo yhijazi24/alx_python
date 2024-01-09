@@ -80,12 +80,15 @@ class Rectangle(Base):
         for i in range(self.height):
             print("#" * self.width)
 
+    def __str__(self):
+        """Method to return a string representation of the Rectangle"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
+
 if __name__ == "__main__":
-    r1 = Rectangle(4, 6)
-    r1.display()
+    r1 = Rectangle(4, 6, 2, 1, 12)
+    print(r1)
 
-    print("---")
-
-    r2 = Rectangle(2, 2)
-    r2.display()
+    r2 = Rectangle(5, 5, 1)
+    print(r2)
 
