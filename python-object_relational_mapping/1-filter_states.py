@@ -17,8 +17,8 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = db.cursor()
 
-    # Execute the SELECT query with a condition for names starting with "N"
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    # Execute the SELECT query with a condition for names starting with "N" (case-insensitive)
+    query = "SELECT * FROM states WHERE name LIKE 'N%' OR name LIKE 'n%' ORDER BY id ASC"
     cursor.execute(query)
 
     # Fetch all rows
