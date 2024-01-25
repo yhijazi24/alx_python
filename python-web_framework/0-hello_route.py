@@ -1,6 +1,4 @@
-"""
-Crkeate a Flask application instance.
-"""
+
 from flask import Flask
 
 """
