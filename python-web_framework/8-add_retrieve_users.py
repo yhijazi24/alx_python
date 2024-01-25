@@ -13,7 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-
+@app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
         try:
@@ -42,4 +42,3 @@ def display_users():
 if __name__ == '__main__':
     db.create_all()
     app.run(host='0.0.0.0', port=5000)
-@app.route('/add_user', methods=['GET', 'POST'])
