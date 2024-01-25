@@ -1,8 +1,10 @@
 """
-This script demonstrates a basic Flask web application.
+This script demonstrates a Flask web application with two routes.
 """
 
-# Import necessary module
+"""
+Import necessary module
+"""
 from flask import Flask
 
 """
@@ -20,6 +22,16 @@ def hello_hbnb():
     """
     return 'Hello HBNB!'
 
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """
+    Route handler for the /hbnb path.
+
+    Returns:
+        str: Message "HBNB".
+    """
+    return 'HBNB'
+
 if __name__ == '__main__':
     """
     Main block to run the Flask application.
@@ -27,4 +39,3 @@ if __name__ == '__main__':
     Starts the development server on 0.0.0.0:5000.
     """
     app.run(host='0.0.0.0', port=5000)
-
