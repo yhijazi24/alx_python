@@ -14,7 +14,6 @@ class User(db.Model):
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-@app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
         try:
@@ -31,3 +30,16 @@ def add_user():
 
     return render_template('add_user.html')
 
+
+@app.route('/users')
+def display_users():
+    try:
+        users = User.query.all()
+        return render_template('users.html', users=users)
+    except Exception as e:
+        flash(f"Error retrieving users: {str(e)}", "error")
+
+if __name__ == '__main__':
+    db.create_all()
+    app.run(host='0.0.0.0', port=5000)
+@app.route('/add_user', methods=['GET', 'POST'])
