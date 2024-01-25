@@ -1,4 +1,3 @@
-# Create a Flask application instance
 from flask import Flask
 
 # Create a Flask application instance
