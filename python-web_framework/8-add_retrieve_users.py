@@ -18,8 +18,8 @@ class User(db.Model):
 def add_user():
     if request.method == 'POST':
         try:
-            name = request.form['name']
-            email = request.form['email']
+            name = request.form.get('name')
+            email = request.form.get('email')
 
             new_user = User(name=name, email=email)
             db.session.add(new_user)
@@ -31,14 +31,3 @@ def add_user():
 
     return render_template('add_user.html')
 
-@app.route('/users')
-def display_users():
-    try:
-        users = User.query.all()
-        return render_template('users.html', users=users)
-    except Exception as e:
-        flash(f"Error retrieving users: {str(e)}", "error")
-
-if __name__ == '__main__':
-    db.create_all()
-    app.run(host='0.0.0.0', port=5000)
