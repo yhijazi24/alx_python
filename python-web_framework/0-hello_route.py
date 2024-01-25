@@ -1,11 +1,13 @@
 """
-This script demonstrates a Flask web application with two routes.
+This script demonstrates a basic Flask web application.
 """
 
-""" Import necessary module """
+# Import necessary module
 from flask import Flask
 
-""" Create a Flask application instance"""
+"""
+Create a Flask application instance.
+"""
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
@@ -17,16 +19,6 @@ def hello_hbnb():
         str: A greeting message.
     """
     return 'Hello HBNB!'
-
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """
-    Route handler for the /hbnb path.
-
-    Returns:
-        str: Message "HBNB".
-    """
-    return 'HBNB'
 
 if __name__ == '__main__':
     """
