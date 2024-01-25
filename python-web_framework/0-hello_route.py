@@ -14,15 +14,9 @@ def hello_hbnb():
 
 if __name__ == '__main__':
     """
-    This script runs a simple Flask web application.
+    Main block to run the Flask application.
 
-    The application listens on 0.0.0.0, port 5000, and has a single route:
-    - Route '/': Displays the message "Hello HBNB!" when accessed.
-
-    To run the application, execute this script.
-
-    Example:
-        python3 0-hello_route.py
+    Starts the development server on 0.0.0.0:5000.
     """
-    # Start the Flask development server on 0.0.0.0:5000
     app.run(host='0.0.0.0', port=5000)
+
