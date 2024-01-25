@@ -2,10 +2,10 @@
 This script demonstrates a Flask web application with two routes.
 """
 
-# Import necessary module
+""" Import necessary module """
 from flask import Flask
 
-# Create a Flask application instance
+""" Create a Flask application instance"""
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
