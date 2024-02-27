@@ -1,26 +1,21 @@
+#!/usr/bin/python3
 import csv
 import requests
 import sys
 
-id = sys.argv[1]
+user_id = str(sys.argv[1])
 
-request_user = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
-request_todos = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}/todos')
+request_user = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+request_todos = "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
 
-data_user = request_user.json()
-data_todos = request_todos.json()
+data_user = requests.get(request_user).json()
+data_todos = requests.get(request_todos).json()
 
-sorted_todos = sorted(data_todos, key=lambda x: x['title'])
+filename = f"{user_id}.csv"
 
-completed_tasks = sum(1 for todo in sorted_todos if todo['completed'])
-
-csv_filename = f'{id}.csv'
-
-with open(csv_filename, 'w', newline='') as csvfile:
-    csv_writer = csv.writer(csvfile)
-    csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
-    for todo in sorted_todos:
-        csv_writer.writerow([id, data_user['username'], todo['completed'], todo['title']])
-
-print(f'Data exported to {csv_filename}')
+with open(filename, "w", newline="") as file:
+    csvwriter = csv.writer(file, quoting=csv.QUOTE_ALL)
+    for task in data_todos:
+        csvwriter.writerow(
+            [user_id, str(data_user["username"]), task["completed"], task["title"]]
+        )
