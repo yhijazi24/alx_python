@@ -1,38 +1,22 @@
 import requests
 import sys
 
-def get_employee_info(employee_id):
-    try:
-        employee_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
-        employee_response.raise_for_status()
-        employee_data = employee_response.json()
-        employee_name = employee_data['name']
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-        return
+id = sys.argv[1]
 
-    try:
-        todo_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos')
-        todo_response.raise_for_status()
-        todo_data = todo_response.json()
-        completed_tasks = [task['title'] for task in todo_data if task['completed']]
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-        return
+request_user = requests.get('https://jsonplaceholder.typicode.com/users/'+id)
+request_todos = requests.get('https://jsonplaceholder.typicode.com/users/'+id+'/todos')
 
-    print(f"{employee_name} is done with tasks ({len(completed_tasks)}/{len(todo_data)}):")
-    for task in completed_tasks:
-        print(f"\t{task}")
+data_user = request_user.json()
+data_todos = request_todos.json()
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
+completed = 0
 
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Error: Employee ID must be an integer.")
-        sys.exit(1)
+for i in data_todos:
+    if i.get('completed')==True:
+        completed = completed + 1
 
-    get_employee_info(employee_id)
+print ('Employee {} is done with tasks({}/{}):'.format(data_user.get('name'), completed,len(data_todos)))
+
+for item in data_todos:
+    if item.get('completed') == True:
+        print('\t ' + item.get('title'))   
